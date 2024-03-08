@@ -8,6 +8,7 @@ const client = createClient({
 });
 
 export async function getPorfolioEntries() {
-    const entries = await client.getEntries({ content_type: "portfoliov2" });
+    const entries = await client.getEntries({content_type : 'portfoliov2'})
+    console.log(entries)
     return entries;
 }
