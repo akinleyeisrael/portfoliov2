@@ -11,8 +11,8 @@ export const ImageCard = ({ title, url }: Prop) => {
             <ContentfulImage
                 alt={`Cover Image for ${title}`}
                 priority
-                width={200}
-                height={200}
+                width={500}
+                height={500}
                 className={
                     "hover:shadow-medium transition-shadow duration-200 shadow-sm w-1/2 flex flex-col-reverse"
                 }

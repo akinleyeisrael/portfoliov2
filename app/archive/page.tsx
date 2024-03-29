@@ -45,7 +45,7 @@ const Archive = async () => {
                     <TableCaption>List of projects.</TableCaption>
                     <TableHeader>
                         <TableRow>
-                            <TableHead className="w-[100px]">Image</TableHead>
+                            {/* <TableHead className="w-[100px]">Image</TableHead> */}
                             <TableHead className="w-[100px]">Year</TableHead>
                             <TableHead className="">Project</TableHead>
                             <TableHead className="hidden sm:table-cell">webtech</TableHead>
@@ -64,14 +64,13 @@ const Archive = async () => {
                             //     console.error("File URL is not a string or thumbnail data is missing.");
                             // }
                             return (
-
                                 <TableRow key={portfolio.sys.id}>
-                                    <TableCell height={80}>
+                                    {/* <TableCell height={80}>
                                         <ImageCard
                                             title={name as string}
                                             url={thumbnail?.fields?.file?.url}
                                         />
-                                    </TableCell>
+                                    </TableCell> */}
                                     <TableCell height={80}>{year as string}</TableCell>
                                     {/* conditional render for one cell */}
                                     <TableCell className="font-semibold table-cell sm:hidden">
@@ -88,7 +87,6 @@ const Archive = async () => {
                                         {name as string}
                                     </TableCell>
 
-
                                     <TableCell className="font-semibold hidden sm:table-cell">
                                         <ul
                                             className="mt-2 flex flex-wrap"
@@ -104,11 +102,21 @@ const Archive = async () => {
                                                 ))}
                                         </ul>
                                     </TableCell>
-                                    <TableCell className="font-semibold hidden sm:table-cell">
+                                    <TableCell className="hidden sm:table-cell">
                                         <Link href={weblink as string}>
-                                            {weblink as string}
+                                            <p className="transition-transform ease-in-out transform hover:scale-105">
+                                                {weblink as string}
+                                            </p>
                                         </Link>
-                                        {githublink as string}
+                                        <Link href={githublink as string}>
+                                            {githublink?.toString().includes("github") ? (
+                                                <p className="group mb-2 items-center inline-flex transition-transform ease-in-out transform hover:scale-105">
+                                                    GitHub <GitHubLogoIcon className="ml-1 h-4 w-4" />
+                                                </p>
+                                            ) : (
+                                                ""
+                                            )}
+                                        </Link>
                                     </TableCell>
                                 </TableRow>
                             );
