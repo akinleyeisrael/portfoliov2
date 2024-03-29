@@ -9,7 +9,7 @@ export default function Home() {
   // const portfolioEntries =  await getPorfolioEntries()
 
   return (
-    <div className="pt-[8rem]">
+    <div className="pt-[6rem]">
       <AboutSection />
       <Experience />
       <SoftwareProjects />
