@@ -18,7 +18,7 @@ const Experience = async () => {
                 <div className="container grid items-start gap-8 px-4 md:px-6 lg:grid-cols-3 lg:gap-10">
                     <div className="space-y-4 lg:col-span-1 lg:sticky lg:top-24">
                         <div className="space-y-2">
-                            <h1 className="text-xl font-bold tracking-tighter sm:text-3xl xl:text-4xl">
+                            <h1 className="text-2xl font-bold tracking-tighter sm:text-3xl xl:text-4xl">
                                 Relevant Experience
                             </h1>
                             <p className=" text-gray-500 md:text-base/relaxed">
