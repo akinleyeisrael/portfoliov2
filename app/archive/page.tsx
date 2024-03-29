@@ -1,20 +1,32 @@
-import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
-import { client } from '@/lib/contentful'
-import { ArrowRightIcon, ArrowTopRightIcon, GitHubLogoIcon } from '@radix-ui/react-icons'
-import Link from 'next/link'
-import React from 'react'
-
+import {
+    Table,
+    TableBody,
+    TableCaption,
+    TableCell,
+    TableHead,
+    TableHeader,
+    TableRow,
+} from "@/components/ui/table";
+import { client } from "@/lib/contentful";
+import ContentfulImage from "@/lib/contentful-image";
+import {
+    ArrowRightIcon,
+    ArrowTopRightIcon,
+    GitHubLogoIcon,
+} from "@radix-ui/react-icons";
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
+import ImageCard from "./ImageCard";
 
 const getPortfolios = async () => {
     const entries = await client.getEntries({ content_type: "portfoliov2" });
     return entries.items; // Access the items array directly
-}
-
+};
 
 const Archive = async () => {
-
-    const response = await getPortfolios()
-    console.log(response)
+    const response = await getPortfolios();
+    console.log(response);
 
     return (
         <div>
@@ -33,18 +45,33 @@ const Archive = async () => {
                     <TableCaption>List of projects.</TableCaption>
                     <TableHeader>
                         <TableRow>
+                            <TableHead className="w-[100px]">Image</TableHead>
                             <TableHead className="w-[100px]">Year</TableHead>
-                            <TableHead>Project</TableHead>
-                            <TableHead className="hidden sm:table-cell">Link</TableHead>
+                            <TableHead className="">Project</TableHead>
                             <TableHead className="hidden sm:table-cell">webtech</TableHead>
-                            <TableHead className="hidden sm:table-cell">Github</TableHead>
+                            <TableHead className="hidden sm:table-cell">Link</TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>
                         {response.map((portfolio) => {
-                            const { year, weblink, githublink, name, thumbnail, webtech } = portfolio.fields;
+                            const { year, weblink, githublink, name, thumbnail, webtech } =
+                                portfolio.fields;
+
+                            // const fileUrl = response[0]?.fields?.thumbnail?.fields?.file?.url;
+                            // if (typeof fileUrl === 'string') {
+                            //     console.log(fileUrl); // Output: '//images.ctfassets.net/4jvmgw0k1i1y/15TCtaLd7Wzp4SfkU215Nk/495fcbe3b00095e7531c14ce258caac4/client.png'
+                            // } else {
+                            //     console.error("File URL is not a string or thumbnail data is missing.");
+                            // }
                             return (
+
                                 <TableRow key={portfolio.sys.id}>
+                                    <TableCell height={80}>
+                                        <ImageCard
+                                            title={name as string}
+                                            url={thumbnail?.fields?.file?.url}
+                                        />
+                                    </TableCell>
                                     <TableCell height={80}>{year as string}</TableCell>
                                     {/* conditional render for one cell */}
                                     <TableCell className="font-semibold table-cell sm:hidden">
@@ -60,24 +87,28 @@ const Archive = async () => {
                                     <TableCell className="font-semibold hidden sm:table-cell">
                                         {name as string}
                                     </TableCell>
-                                    <TableCell className="font-semibold hidden sm:table-cell">
-                                        {weblink as string}
-                                    </TableCell>
 
-                                    <TableCell className="sm:table-cell">
-                                        <ul className="mt-2 flex flex-wrap" aria-label="Technologies used">
-                                            {Array.isArray(webtech) && webtech.map(tech => (
-                                                <li key={tech as string} className="mr-1.5 mt-2">
-                                                    <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
-                                                        {tech as string}
-                                                    </div>
-                                                </li>
-                                            ))}
+
+                                    <TableCell className="font-semibold hidden sm:table-cell">
+                                        <ul
+                                            className="mt-2 flex flex-wrap"
+                                            aria-label="Technologies used"
+                                        >
+                                            {Array.isArray(webtech) &&
+                                                webtech.map((tech) => (
+                                                    <li key={tech as string} className="mr-1.5 mt-2">
+                                                        <div className="flex items-center  rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
+                                                            {tech as string}
+                                                        </div>
+                                                    </li>
+                                                ))}
                                         </ul>
                                     </TableCell>
-                                    <TableCell className="sm:table-cell">
+                                    <TableCell className="font-semibold hidden sm:table-cell">
+                                        <Link href={weblink as string}>
+                                            {weblink as string}
+                                        </Link>
                                         {githublink as string}
-                                        {/* {thumbnail as string}   */}
                                     </TableCell>
                                 </TableRow>
                             );
@@ -86,9 +117,7 @@ const Archive = async () => {
                 </Table>
             </div>
         </div>
-
-
     );
-}
+};
 
-export default Archive
+export default Archive;
