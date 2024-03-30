@@ -12,10 +12,17 @@ import React from "react";
 import SlideUp from "./slide-up";
 
 
-
+const words = ["ww", "ewe"]
 const getPortfolios = async () => {
   const entries = await client.getEntries({ content_type: "portfoliov2" });
-  return entries.items; // Access the items array directly
+  const filteredPortfolios = entries.items.filter(portfolio =>
+    ["youly", "auth", "dd"].some(keyword =>
+      portfolio.fields.name?.toString().includes(keyword)
+    )
+  ).slice(0, 3); // Limit to only three portfolios that include "youly", "ds", or "dd"
+
+  return filteredPortfolios; // Access the items array directly
+
 };
 const SoftwareProjects = async () => {
   const response = await getPortfolios();
@@ -44,12 +51,12 @@ const SoftwareProjects = async () => {
           } = portfolio.fields;
           return (
             <div key={idx}>
-              {/* <SlideUp offset="-300px 0px -300px 0px"> */}
+              <SlideUp offset="-300px 0px -300px 0px">
                 <div className="flex flex-col animate-slideUpCubiBezier animation-delay-2 md:flex-row md:space-x-12">
                   <div className=" md:w-1/2 shadow-2xl">
                     <Link href={weblink as string}>
                       <ContentfulImage
-                        src={""}
+                        src={thumbnail?.fields?.file?.url}
                         alt=""
                         width={1000}
                         height={600}
@@ -92,13 +99,15 @@ const SoftwareProjects = async () => {
                     </div>
                   </div>
                 </div>
-              {/* </SlideUp> */}
+              </SlideUp>
             </div>
           );
         })}
       </div>
 
-      <div className="my-10">
+
+      <div className="py-10">
+
         <Link
           className="group mb-2 inline-flex items-center rounded  text-center leading-tight text-primary"
           href="/archive"
@@ -106,6 +115,10 @@ const SoftwareProjects = async () => {
           View Full Resume Archive
           <ArrowRightIcon className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-2" />
         </Link>
+      </div>
+      <div className=" text-center pb-12 text-sm">
+        <p> Built with <span className="font-semibold">Next.js</span> and <span className="font-semibold">Tailwind CSS</span>, deployed with <span className="font-semibold">Vercel</span></p>
+        <p>Inspired by <Link href="brittanychiang.com" className="hover:cursor-pointer hover:underline font-medium">BrittanyChiang</Link></p>
       </div>
     </section>
   );
