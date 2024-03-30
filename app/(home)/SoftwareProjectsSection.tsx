@@ -49,7 +49,7 @@ const SoftwareProjects = async () => {
                   <div className=" md:w-1/2 shadow-2xl">
                     <Link href={weblink as string}>
                       <ContentfulImage
-                        src={thumbnail?.fields?.file?.url}
+                        src={""}
                         alt=""
                         width={1000}
                         height={600}
