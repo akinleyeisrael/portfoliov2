@@ -7,7 +7,7 @@ const config = {
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
-	],
+  ],
   prefix: "",
   theme: {
     container: {
@@ -18,6 +18,14 @@ const config = {
       },
     },
     extend: {
+    
+
+      animationDelay: {
+        0: "0s",
+        2: "0.2s",
+        4: "0.4s",
+        6: "0.6s",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -59,6 +67,7 @@ const config = {
         sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
+        
         "accordion-down": {
           from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" },
@@ -68,9 +77,29 @@ const config = {
           to: { height: "0" },
         },
       },
+      fadeIn: {
+        from: { opacity: 0 },
+        to: { opacity: 1 },
+      },
+      slideUp: {
+        from: { transform: "translateY(100%)" },
+        to: { transform: "translateY(0)" },
+      },
+      bounce: {
+        from: { transform: "translateY(10px)" },
+        to: { transform: "translateY(0)" },
+      },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+
+        //added
+        fadeIn: "fadeIn 1.5s",
+        bounce:
+          "bounce 0.5s alternate cubic-bezier(0.95, 0.05, 0.795, 0.035) infinite",
+        slideUp: "slideUp 0.5s",
+        slideUpEaseInOut: "slideUp 0.5s ease-in-out",
+        slideUpCubiBezier: "slideUp 1s cubic-bezier(0.165, 0.84, 0.44, 1)",
       },
     },
   },

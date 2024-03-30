@@ -1,23 +1,63 @@
+"use client";
+import {
+    NavigationMenu,
+    NavigationMenuContent,
+    NavigationMenuItem,
+    NavigationMenuLink,
+    NavigationMenuList,
+    NavigationMenuTrigger,
+    navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
+// import Link from "next/link";
+import React from "react";
+import { Link } from 'react-scroll';
 
 
-import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from '@/components/ui/navigation-menu'
-import React from 'react'
+const NAV_ITEMS = [
+    {
+        label: "about",
+        page: "about",
+    },
+    {
+        label: "experience",
+        page: "experience",
+    },
+    {
+        label: "projects",
+        page: "projects",
+    },
+];
 
 const NavBar = () => {
     return (
-        <div className="mt-6 fixed">
+        <div className="mt-6 fixed z-50 container">
             <NavigationMenu>
                 <NavigationMenuList>
-                    <NavigationMenuItem>
-                        <NavigationMenuTrigger>about</NavigationMenuTrigger>
-                        <NavigationMenuTrigger>experience</NavigationMenuTrigger>
-                        <NavigationMenuTrigger>projects</NavigationMenuTrigger>
-                    </NavigationMenuItem>
+                    {NAV_ITEMS.map((item, idx) => (
+                        <NavigationMenuItem key={idx}>
+                            <Link
+                                key={idx}
+                                to={item.page}
+                                className={
+                                    "block lg:inline-block text-neutral-900  hover:text-neutral-500 dark:text-neutral-100"
+                                }
+                                activeClass="active"
+                                spy={true}
+                                smooth={true}
+                                offset={-100}
+                                duration={500}
+
+                            >
+                                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                                    {item.label}
+                                </NavigationMenuLink>
+                            </Link>
+                        </NavigationMenuItem>
+                    ))}
                 </NavigationMenuList>
             </NavigationMenu>
-
         </div>
-    )
-}
+    );
+};
 
-export default NavBar
+export default NavBar;
