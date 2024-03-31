@@ -30,16 +30,16 @@ const NAV_ITEMS = [
 
 const NavBar = () => {
     return (
-        <div className="mt-6 fixed z-50 container">
+        <div className="mt-6 fixed z-50 container ">
             <NavigationMenu>
-                <NavigationMenuList>
+                <NavigationMenuList className="">
                     {NAV_ITEMS.map((item, idx) => (
-                        <NavigationMenuItem key={idx}>
+                        <NavigationMenuItem key={idx} >
                             <Link
                                 key={idx}
                                 to={item.page}
                                 className={
-                                    "block lg:inline-block text-neutral-900  hover:text-neutral-500 dark:text-neutral-100 hover:cursor-pointer"
+                                    "block lg:inline-block text-neutral-900   hover:cursor-pointer"
                                 }
                                 activeClass="active"
                                 spy={true}

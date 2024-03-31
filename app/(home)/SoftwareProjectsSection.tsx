@@ -29,7 +29,7 @@ const SoftwareProjects = async () => {
   console.log(response);
 
   return (
-    <section id="projects" className="container">
+    <section id="projects" className="container text-card">
       <div className="text-center pb-10">
         <h1 className="text-2xl  font-bold tracking-tighter sm:text-3xl xl:text-4xl">
           Projects
@@ -56,7 +56,7 @@ const SoftwareProjects = async () => {
                   <div className=" md:w-1/2 shadow-2xl">
                     <Link href={weblink as string}>
                       <ContentfulImage
-                        src={thumbnail?.fields?.file?.url}
+                        src={""}
                         alt=""
                         width={1000}
                         height={600}
