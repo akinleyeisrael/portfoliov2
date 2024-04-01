@@ -50,9 +50,9 @@ export const TracingBeam = ({
     return (
         <motion.div
             ref={ref}
-            className={cn("  max-w-7xl mx-auto h-full", className)}
+            className={cn("max-w-7xl mx-auto h-full", className)}
         >
-            <div className="absolute -left-4 md:left-24 top-3">
+            <div className="absolute -left-4 md:left-24 -top-6">
                 <motion.div
                     transition={{
                         duration: 0.2,
@@ -77,7 +77,7 @@ export const TracingBeam = ({
                             borderColor:
                                 scrollYProgress.get() > 0 ? "white" : "var(--emerald-600)",
                         }}
-                        className="h-2 w-2  rounded-full border border-neutral-300 bg-white"
+                        className="h-2 w-2 mt-16  rounded-full border border-neutral-300 bg-white"
                     />
                 </motion.div>
                 <svg

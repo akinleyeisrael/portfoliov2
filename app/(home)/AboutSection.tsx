@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { LayoutGrid } from '@/components/ui/layout-grid';
 import { TypewriterEffect } from '@/components/ui/typewriter-effect';
 import { SocialMedia } from '../layout';
@@ -26,7 +27,7 @@ const AboutSection = () => {
                     <TypewriterEffect words={words} />
                 </div>
                 <p className='text-slate-400 tracking-normal leading-loose'>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor inunt mollit anim id est laborum.
+                    I am a passionate <span className='font-bold'>Fullstack Engineer </span>with a relentless drive for <span className='font-bold'>innovation</span> and <span className='font-bold'>problem-solving</span>. Graduating with a degree in <span className='font-bold'>Computer Programming</span> I've embarked on a journey to weave intricate webs of code into transformative digital experiences.
                 </p>
                 <div className='block md:hidden lg:hidden'>
                     <SocialMedia />
@@ -37,7 +38,7 @@ const AboutSection = () => {
             </div>
             <div className="pt-2">
                 <p className='text-slate-400 tracking-normal leading-loose'>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,Lorem ipsum dolor sit amet, consectetur adipiscing elit,Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    Beyond the world of programming,I am also a skilled <span className='font-bold'>cinematographer,</span> proficient in capturing captivating <span>videos</span> with a keen eye for <span className='font-bold'>visual storytellin</span>g.
                 </p>
             </div>
         </section>
