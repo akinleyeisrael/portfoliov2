@@ -46,7 +46,7 @@ const Experience = async () => {
                                     id="january-2019"
                                     key={exp.sys.id}
                                 >
-                                    <span className="text-xl font-bold mb-6 text-lime-200">
+                                    <span className="text-xl font-bold mb-6 text-lime-300">
                                         {jobtitle as string}{" "}
                                         <span className="inline-block">
                                             <DotFilledIcon />

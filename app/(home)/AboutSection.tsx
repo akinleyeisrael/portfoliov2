@@ -23,11 +23,12 @@ const AboutSection = () => {
     return (
         <section id='about' className='container'>
             <div className='text-md'>
+                <h1 className='text-5xl flex flex-col text-slate-400'>Frontend <span>Developer</span></h1>
                 <div className='pb-4 sm:pb-6'>
                     <TypewriterEffect words={words} />
                 </div>
                 <p className='text-slate-400 tracking-normal leading-loose'>
-                    I am a passionate <span className='font-bold'>Fullstack Engineer </span>with a relentless drive for <span className='font-bold'>innovation</span> and <span className='font-bold'>problem-solving</span>. Graduating with a degree in <span className='font-bold'>Computer Programming</span> I've embarked on a journey to weave intricate webs of code into transformative digital experiences.
+                    I am a passionate <span className='font-bold'>Frontend Developer </span>with a relentless drive for <span className='font-bold'>innovation</span> and <span className='font-bold'>problem-solving</span>. Graduating with a degree in <span className='font-bold'>Computer Programming</span> I've embarked on a journey to weave intricate webs of code into transformative digital experiences.
                 </p>
                 <div className='block md:hidden lg:hidden'>
                     <SocialMedia />
