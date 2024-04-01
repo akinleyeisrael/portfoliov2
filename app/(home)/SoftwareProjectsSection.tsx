@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { client } from "@/lib/contentful";
 import ContentfulImage from "@/lib/contentful-image";
 import {
@@ -6,9 +5,7 @@ import {
   ArrowTopRightIcon,
   GitHubLogoIcon,
 } from "@radix-ui/react-icons";
-import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 import SlideUp from "./slide-up";
 
 
@@ -29,12 +26,12 @@ const SoftwareProjects = async () => {
   console.log(response);
 
   return (
-    <section id="projects" className="container text-card">
+    <section id="projects" className="container">
       <div className="text-center pb-10">
-        <h1 className="text-2xl  font-bold tracking-tighter sm:text-3xl xl:text-4xl">
+        <h1 className="text-2xl  font-bold tracking-tighter sm:text-3xl xl:text-4xl text-lime-300">
           Projects
         </h1>
-        <p className=" text-gray-500 md:text-base/relaxed">
+        <p className=" md:text-base/relaxed text-slate-300 tracking-normal leading-loose">
           A couple of software developed
         </p>
       </div>
@@ -50,13 +47,13 @@ const SoftwareProjects = async () => {
             webtech,
           } = portfolio.fields;
           return (
-            <div key={idx}>
+            <div key={idx} className="hover:shadow-lg hover:bg-slate-400/5 p-4 hover:rounded-md">
               <SlideUp offset="-300px 0px -300px 0px">
-                <div className="flex flex-col animate-slideUpCubiBezier animation-delay-2 md:flex-row md:space-x-12">
-                  <div className=" md:w-1/2 shadow-2xl">
+                <div className="flex flex-col animate-slideUpCubiBezier animation-delay-2 md:flex-row md:space-x-12 ">
+                  <div className=" md:w-1/2">
                     <Link href={weblink as string}>
                       <ContentfulImage
-                        src={""}
+                        src={thumbnail?.fields.file.url}
                         alt=""
                         width={1000}
                         height={600}
@@ -65,21 +62,21 @@ const SoftwareProjects = async () => {
                           height: "100%",
                           objectFit: "cover",
                         }}
-                        className="rounded-xl shadow-xl hover:opacity-70"
+                        className="rounded-md hover:opacity-70"
                       />
                     </Link>
                   </div>
                   <div className="mt-10 md:w-1/2 md:mt-2">
-                    <h1 className="text-xl font-bold mb-6">{name as string}</h1>
-                    <p className="text-sm leading-normal mb-4 text-neutral-600 dark:text-neutrazl-400">
+                    <h1 className="text-xl font-bold mb-6  text-lime-300">{name as string}</h1>
+                    <p className="text-sm mb-4 text-slate-400 tracking-normal leading-loose">
                       {portfoliodescription as string}
                     </p>
                     <div className="flex flex-row align-bottom gap-4">
                       <Link href={githublink as string} target="_blank">
-                        <GitHubLogoIcon className="hover:-translate-y-1 transition-transform cursor-pointer" />
+                        <GitHubLogoIcon className="hover:-translate-y-1 transition-transform cursor-pointer text-slate-200" />
                       </Link>
                       <Link href={weblink as string} target="_blank">
-                        <ArrowTopRightIcon className="hover:-translate-y-1 transition-transform cursor-pointer" />
+                        <ArrowTopRightIcon className="hover:-translate-y-1 transition-transform cursor-pointer text-slate-200" />
                       </Link>
                     </div>
                     <div>
@@ -90,7 +87,7 @@ const SoftwareProjects = async () => {
                         {Array.isArray(webtech) &&
                           webtech.map((tech) => (
                             <li key={tech as string} className="mr-1.5 mt-2">
-                              <div className="flex items-center  rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
+                              <div className="flex items-center  rounded-full bg-lime-400/10 px-3 py-1 text-xs font-medium leading-5 text-lime-300">
                                 {tech as string}
                               </div>
                             </li>
@@ -109,17 +106,14 @@ const SoftwareProjects = async () => {
       <div className="py-10">
 
         <Link
-          className="group mb-2 inline-flex items-center rounded  text-center leading-tight text-primary"
+          className="group mb-2 inline-flex items-center rounded  text-center tracking-tight text-md font-bold hover:text-lime-300 text-slate-200"
           href="/archive"
         >
-          View Full Resume Archive
+          View All Projects
           <ArrowRightIcon className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-2" />
         </Link>
       </div>
-      <div className=" text-center pb-12 text-sm">
-        <p> Built with <span className="font-semibold">Next.js</span> and <span className="font-semibold">Tailwind CSS</span>, deployed with <span className="font-semibold">Vercel</span></p>
-        <p>Inspired by <Link href="brittanychiang.com" className="hover:cursor-pointer hover:underline font-medium">BrittanyChiang</Link></p>
-      </div>
+
     </section>
   );
 };

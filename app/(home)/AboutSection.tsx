@@ -1,19 +1,42 @@
-import { LayoutGrid } from '@/components/ui/layout-grid'
-import React from 'react'
+import { LayoutGrid } from '@/components/ui/layout-grid';
+import { TypewriterEffect } from '@/components/ui/typewriter-effect';
+import { SocialMedia } from '../layout';
 
+const words = [
+    {
+        text: "hey",
+    },
+    {
+        text: "I'am",
+    },
+    {
+        text: "Akinola",
+        className: "text-lime-300"
+    },
+    {
+        text: "Akinleye.",
+        className: "text-lime-300"
+    },
+];
 const AboutSection = () => {
     return (
         <section id='about' className='container'>
-            <div>
-                <p className='text-slate-50'>
+            <div className='text-md'>
+                <div className='pb-4 sm:pb-6'>
+                    <TypewriterEffect words={words} />
+                </div>
+                <p className='text-slate-400 tracking-normal leading-loose'>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor inunt mollit anim id est laborum.
                 </p>
+                <div className='block md:hidden lg:hidden'>
+                    <SocialMedia />
+                </div>
             </div>
             <div className="h-screen py-10 w-full">
                 <LayoutGrid cards={cards} />
             </div>
             <div className="pt-2">
-                <p className='text-slate-50'>
+                <p className='text-slate-400 tracking-normal leading-loose'>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit,Lorem ipsum dolor sit amet, consectetur adipiscing elit,Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                 </p>
             </div>

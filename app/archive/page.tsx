@@ -29,101 +29,85 @@ const Archive = async () => {
     console.log(response);
 
     return (
-        <div>
-            <div className="mx-auto items-center max-w-5xl min-h-screen px-6 py-10 sm:px-0 sm:py-10">
-                <Link
-                    className="group mb-2 inline-flex items-center font-semibold text-lg leading-tight text-primary"
-                    href="/"
-                >
-                    <ArrowRightIcon className="mr-1 h-4 w-4 rotate-180 transition-transform group-hover:-translate-x-2" />
-                    Akin
-                </Link>
-                <h1 className="text-4xl font-bold tracking-tight text-primary sm:text-5xl mb-10">
-                    All Projects
-                </h1>
-                <Table className="text-base">
-                    <TableCaption>List of projects.</TableCaption>
-                    <TableHeader>
-                        <TableRow>
-                            {/* <TableHead className="w-[100px]">Image</TableHead> */}
-                            <TableHead className="w-[100px]">Year</TableHead>
-                            <TableHead className="">Project</TableHead>
-                            <TableHead className="hidden sm:table-cell">webtech</TableHead>
-                            <TableHead className="hidden sm:table-cell">Link</TableHead>
-                        </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                        {response.map((portfolio) => {
-                            const { year, weblink, githublink, name, thumbnail, webtech } =
-                                portfolio.fields;
-
-                            // const fileUrl = response[0]?.fields?.thumbnail?.fields?.file?.url;
-                            // if (typeof fileUrl === 'string') {
-                            //     console.log(fileUrl); // Output: '//images.ctfassets.net/4jvmgw0k1i1y/15TCtaLd7Wzp4SfkU215Nk/495fcbe3b00095e7531c14ce258caac4/client.png'
-                            // } else {
-                            //     console.error("File URL is not a string or thumbnail data is missing.");
-                            // }
-                            return (
-                                <TableRow key={portfolio.sys.id}>
-                                    {/* <TableCell height={80}>
-                                        <ImageCard
-                                            title={name as string}
-                                            url={thumbnail?.fields?.file?.url}
-                                        />
-                                    </TableCell> */}
-                                    <TableCell height={80}>{year as string}</TableCell>
-                                    {/* conditional render for one cell */}
-                                    <TableCell className="font-semibold table-cell sm:hidden">
-                                        {weblink && (
-                                            <Link href={weblink as string} title={weblink as string}>
-                                                <p className="group mb-2 inline-flex items-center leading-tight">
-                                                    {name as string}
-                                                    <ArrowTopRightIcon className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                                                </p>
-                                            </Link>
-                                        )}
-                                    </TableCell>
-                                    <TableCell className="font-semibold hidden sm:table-cell">
-                                        {name as string}
-                                    </TableCell>
-
-                                    <TableCell className="font-semibold hidden sm:table-cell">
-                                        <ul
-                                            className="mt-2 flex flex-wrap"
-                                            aria-label="Technologies used"
-                                        >
-                                            {Array.isArray(webtech) &&
-                                                webtech.map((tech) => (
-                                                    <li key={tech as string} className="mr-1.5 mt-2">
-                                                        <div className="flex items-center  rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
-                                                            {tech as string}
-                                                        </div>
-                                                    </li>
-                                                ))}
-                                        </ul>
-                                    </TableCell>
-                                    <TableCell className="hidden sm:table-cell">
-                                        <Link href={weblink as string}>
-                                            <p className="transition-transform ease-in-out transform hover:scale-105">
-                                                {weblink as string}
+        <div className="mx-auto items-center max-w-5xl min-h-screen px-6 py-10 sm:px-0 sm:py-10">
+            <Link
+                className=" text-slate-200 hover:text-lime-300 group mb-2 inline-flex items-center font-semibold text-lg leading-tight text-primary"
+                href="/"
+            >
+                <ArrowRightIcon className="mr-1 h-4 w-4 rotate-180 transition-transform group-hover:-translate-x-2" />
+                Akin
+            </Link>
+            <h1 className="text-4xl text-lime-300 font-bold tracking-tight sm:text-5xl mb-10">
+                All Projects
+            </h1>
+            <Table className="text-md text-slate-400">
+                <TableCaption className="text-slate-400">List of projects.</TableCaption>
+                <TableHeader>
+                    <TableRow className="">
+                        {/* <TableHead className="w-[100px]">Image</TableHead> */}
+                        <TableHead className="w-[100px] text-slate-200">Year</TableHead>
+                        <TableHead className="text-slate-200">Project</TableHead>
+                        <TableHead className="hidden sm:table-cell text-slate-200">webtech</TableHead>
+                        <TableHead className="hidden sm:table-cell text-slate-200">Link</TableHead>
+                    </TableRow>
+                </TableHeader>
+                <TableBody>
+                    {response.map((portfolio) => {
+                        const { year, weblink, githublink, name, thumbnail, webtech } =
+                            portfolio.fields;
+                        return (
+                            <TableRow key={portfolio.sys.id} className="text-slate-400">
+                                <TableCell height={80}>{year as string}</TableCell>
+                                <TableCell className="font-semibold table-cell sm:hidden">
+                                    {weblink && (
+                                        <Link href={weblink as string} title={weblink as string} className="hover:text-lime-300">
+                                            <p className="group mb-2 inline-flex items-center leading-tight">
+                                                {name as string}
+                                                <ArrowTopRightIcon className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
                                             </p>
                                         </Link>
-                                        <Link href={githublink as string}>
-                                            {githublink?.toString().includes("github") ? (
-                                                <p className="group mb-2 items-center inline-flex transition-transform ease-in-out transform hover:scale-105">
-                                                    GitHub <GitHubLogoIcon className="ml-1 h-4 w-4" />
-                                                </p>
-                                            ) : (
-                                                ""
-                                            )}
-                                        </Link>
-                                    </TableCell>
-                                </TableRow>
-                            );
-                        })}
-                    </TableBody>
-                </Table>
-            </div>
+                                    )}
+                                </TableCell>
+                                <TableCell className="font-semibold text-slate-200 hidden sm:table-cell">
+                                    {name as string}
+                                </TableCell>
+
+                                <TableCell className="hidden sm:table-cell">
+                                    <ul
+                                        className="mt-2 flex flex-wrap"
+                                        aria-label="Technologies used"
+                                    >
+                                        {Array.isArray(webtech) &&
+                                            webtech.map((tech) => (
+                                                <li key={tech as string} className="mr-1.5 mt-2">
+                                                    <div className="flex items-center  rounded-full bg-lime-400/10 px-3 py-1 text-xs  leading-5 text-lime-300">
+                                                        {tech as string}
+                                                    </div>
+                                                </li>
+                                            ))}
+                                    </ul>
+                                </TableCell>
+                                <TableCell className="hidden sm:table-cell">
+                                    <Link href={weblink as string} className="hover:text-lime-300 font-semibold text-sm">
+                                        <p className="transition-transform ease-in-out transform hover:scale-105">
+                                            {weblink as string}
+                                        </p>
+                                    </Link>
+                                    <Link href={githublink as string}>
+                                        {githublink?.toString().includes("github") ? (
+                                            <p className=" group mb-2 items-center inline-flex transition-transform ease-in-out transform hover:text-lime-300 hover:scale-105">
+                                                GitHub <GitHubLogoIcon className="ml-1 h-4 w-4" />
+                                            </p>
+                                        ) : (
+                                            ""
+                                        )}
+                                    </Link>
+                                </TableCell>
+                            </TableRow>
+                        );
+                    })}
+                </TableBody>
+            </Table>
         </div>
     );
 };

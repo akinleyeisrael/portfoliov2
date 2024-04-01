@@ -1,18 +1,19 @@
-import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
-import Image from "next/image";
-import { LayoutGrid } from "@/components/ui/layout-grid";
-import SoftwareProjects from "./SoftwareProjectsSection";
-import Experience from "./ExperienceSection";
 import AboutSection from "./AboutSection";
+import Experience from "./ExperienceSection";
+import { Footer } from "./Footer";
+import SoftwareProjects from "./SoftwareProjectsSection";
 
 export default function Home() {
   // const portfolioEntries =  await getPorfolioEntries()
 
   return (
     <div className="pt-[6rem]">
+
       <AboutSection />
       <Experience />
       <SoftwareProjects />
+      <Footer />
+
     </div>
   );
 }
