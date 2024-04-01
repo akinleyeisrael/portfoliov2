@@ -25,7 +25,7 @@ const AboutSection = () => {
             <div>
                 <div className='py-4'>
                     <h1 className='text-5xl flex flex-col text-lime-400 font-bold text'>Frontend <span>Developer.</span></h1>
-                    <div className=''>
+                    <div className='pt-2'>
                         <TypewriterEffect words={words} />
                     </div>
                 </div>
