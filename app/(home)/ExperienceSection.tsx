@@ -1,23 +1,26 @@
 import { Button } from "@/components/ui/button";
 import { client } from "@/lib/contentful";
-import { ArrowRightIcon } from "@radix-ui/react-icons";
+import { ArrowRightIcon, DotFilledIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 import React from "react";
 
 const getExperiences = async () => {
-    const entries = await client.getEntries({ content_type: "experience" });
-    return entries.items; // Access the items array directly
+    const entries = await client.getEntries({
+        content_type: "experience",
+        order: ["sys.createdAt"],
+    });
+    return entries.items;
 };
 const getResume = async () => {
     const entries = await client.getEntries({ content_type: "resume" });
-    return entries.items; // Access the items array directly
+    return entries.items;
 };
 
 const Experience = async () => {
     const response = await getExperiences();
-    const resumes = await getResume()
+    const resumes = await getResume();
     console.log(response);
-    console.log(resumes)
+    console.log(resumes);
     return (
         <section id="experience" className="container">
             <div className="w-full py-12 lg:py-24 xl:py-32">
@@ -35,17 +38,31 @@ const Experience = async () => {
 
                     <div className="space-y-8 lg:space-y-12 lg:col-span-2 ">
                         {response.map((exp) => {
-                            const { jobtitle, company, date, jobdescription, exptech } = exp.fields;
+                            const { jobtitle, company, date, jobdescription, exptech } =
+                                exp.fields;
                             return (
-                                <div className="space-y-2 hover:shadow-lg hover:bg-slate-300/5 p-4 hover:rounded-md" id="january-2019" key={exp.sys.id}>
-                                    <span className="text-xl font-bold mb-6 text-lime-200 ">
-                                        {jobtitle as string} . <span className="inline-block">{company as string}</span>
+                                <div
+                                    className="space-y-2 hover:shadow-lg hover:bg-slate-300/5 p-4 hover:rounded-md"
+                                    id="january-2019"
+                                    key={exp.sys.id}
+                                >
+                                    <span className="text-xl font-bold mb-6 text-lime-200">
+                                        {jobtitle as string}{" "}
+                                        <span className="inline-block">
+                                            <DotFilledIcon />
+                                        </span>{" "}
+                                        <span className="inline-block">{company as string}</span>
                                     </span>
-                                    <p className="leading-normal font-medium text-slate-200">{date as string}</p>
+                                    <p className="leading-normal font-medium text-slate-200">
+                                        {date as string}
+                                    </p>
                                     <p className="text-sm  mb-4 text-slate-400 tracking-normal leading-loose">
                                         {jobdescription as string}
                                     </p>
-                                    <ul className="mt-2 flex flex-wrap" aria-label="Technologies used">
+                                    <ul
+                                        className="mt-2 flex flex-wrap"
+                                        aria-label="Technologies used"
+                                    >
                                         {Array.isArray(exptech) &&
                                             exptech.map((tech) => (
                                                 <li key={tech as string} className="mr-1.5 mt-2">
@@ -61,7 +78,7 @@ const Experience = async () => {
                     </div>
                 </div>
                 <div className="">
-                    {resumes.map(file => {
+                    {resumes.map((file: any) => {
                         const { resume } = file.fields;
                         return (
                             <Link
@@ -72,9 +89,8 @@ const Experience = async () => {
                                 View Full Resume Archive
                                 <ArrowRightIcon className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-2" />
                             </Link>
-                        )
+                        );
                     })}
-
                 </div>
             </div>
         </section>

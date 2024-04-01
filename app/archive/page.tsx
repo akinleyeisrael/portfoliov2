@@ -20,7 +20,7 @@ import React from "react";
 import ImageCard from "./ImageCard";
 
 const getPortfolios = async () => {
-    const entries = await client.getEntries({ content_type: "portfoliov2" });
+    const entries = await client.getEntries({ content_type: "portfoliov2", order: ["sys.createdAt"] });
     return entries.items; // Access the items array directly
 };
 
