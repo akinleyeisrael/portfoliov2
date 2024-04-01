@@ -10,7 +10,9 @@ export const metadata: Metadata = {
   title: "Akinola Akinleye",
   description:
     "Frontend Developer and Computer Programmer.",
-   
+    icons: {
+      icon: '/favicon.png', // /public path
+    },
 };
 
 export default function RootLayout({
