@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import { LayoutGrid } from '@/components/ui/layout-grid';
 import { TypewriterEffect } from '@/components/ui/typewriter-effect';
-import { SocialMedia } from '../layout';
+import { SocialMedia } from './socialMedias';
 
 const words = [
     {
