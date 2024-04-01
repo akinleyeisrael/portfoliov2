@@ -22,10 +22,12 @@ const words = [
 const AboutSection = () => {
     return (
         <section id='about' className='container'>
-            <div className='text-md'>
-                <h1 className='text-5xl flex flex-col text-slate-400'>Frontend <span>Developer</span></h1>
-                <div className='pb-4 sm:pb-6'>
-                    <TypewriterEffect words={words} />
+            <div>
+                <div className='py-4'>
+                    <h1 className='text-5xl flex flex-col text-lime-400 font-bold text'>Frontend <span>Developer.</span></h1>
+                    <div className=''>
+                        <TypewriterEffect words={words} />
+                    </div>
                 </div>
                 <p className='text-slate-400 tracking-normal leading-loose'>
                     I am a passionate <span className='font-bold'>Frontend Developer </span>with a relentless drive for <span className='font-bold'>innovation</span> and <span className='font-bold'>problem-solving</span>. Graduating with a degree in <span className='font-bold'>Computer Programming</span> I've embarked on a journey to weave intricate webs of code into transformative digital experiences.
