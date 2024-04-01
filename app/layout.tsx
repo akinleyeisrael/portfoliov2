@@ -9,9 +9,9 @@ export const metadata: Metadata = {
   title: "Akinola Akinleye",
   description:
     "Frontend Developer and Computer Programmer.",
-    icons: {
-      icon: '/favicon.png', // /public path
-    },
+  icons: {
+    icon: '/favicon.png', // /public path
+  },
 };
 
 export default function RootLayout({
@@ -28,6 +28,11 @@ export default function RootLayout({
         <main className={`max-w-6xl mx-auto items-center min-h-screen `}>
           {children}
         </main>
+        <style jsx global>{`
+          .icon-round {
+            border-radius: 50%;
+          }
+        `}</style>
       </body>
     </html>
   );
