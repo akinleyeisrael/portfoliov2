@@ -1,8 +1,8 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 type Card = {
     id: number;
@@ -26,7 +26,7 @@ export const LayoutGrid = ({ cards }: { cards: Card[] }) => {
     };
 
     return (
-        <div className="w-full h-full grid grid-cols-2 md:grid-cols-3  max-w-7xl mx-auto gap-4 ">
+        <div className="w-full h-full p-10 grid grid-cols-1 md:grid-cols-3 max-w-  xl mx-auto gap-4 ">
             {cards.map((card, i) => (
                 <div key={i} className={cn(card.className, "")}>
                     <motion.div
@@ -50,7 +50,7 @@ export const LayoutGrid = ({ cards }: { cards: Card[] }) => {
             <motion.div
                 onClick={handleOutsideClick}
                 className={cn(
-                    "absolute h-full w-full left-0 top-0 bg-lime-100/30 opacity-20 z-10",
+                    "absolute h-full w-full left-0 top-0 bg-black opacity-0 z-10",
                     selected?.id ? "pointer-events-auto" : "pointer-events-none"
                 )}
                 animate={{ opacity: selected?.id ? 0.3 : 0 }}
