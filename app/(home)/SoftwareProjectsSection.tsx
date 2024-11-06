@@ -16,7 +16,7 @@ const getPortfolios = async () => {
   });
   const filteredPortfolios = entries.items
     .filter((portfolio) =>
-      ["akintunde", "youly", "devfinder"].some((keyword) =>
+      ["akintunde", "youly", "devfinder","fashionista"].some((keyword) =>
         portfolio.fields.name?.toString().includes(keyword)
       )
     )
